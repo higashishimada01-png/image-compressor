@@ -7,13 +7,12 @@ import {
 } from 'lucide-react';
 
 // --- UI Components ---
-
 const Button = ({ children, onClick, variant = 'primary', className = '', ...props }) => {
   const baseStyle = "font-bold rounded-2xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 px-8 py-4 shadow-sm";
   const variants = {
     primary: "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-100 hover:shadow-xl hover:shadow-blue-200",
     secondary: "bg-white border border-gray-200 hover:border-blue-400 text-gray-700 hover:text-blue-600 hover:shadow-lg",
-    danger: "text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full p-2 w-10 h-10",
+    danger: "text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full p-2 w-10 h-10 flex items-center justify-center",
   };
   
   return (
@@ -27,40 +26,23 @@ const Button = ({ children, onClick, variant = 'primary', className = '', ...pro
   );
 };
 
-// --- Page Components ---
-
+// --- Page Content Components ---
 const OperatorInfo = () => (
-  <div className="max-w-3xl mx-auto py-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <div className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-2xl shadow-blue-50 border border-gray-100">
-      <div className="flex items-center gap-4 mb-10 border-b pb-6">
-        <div className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-blue-200">
-          <User size={24} />
-        </div>
+  <div className="max-w-3xl mx-auto py-10">
+    <div className="bg-white p-10 md:p-16 rounded-[3rem] shadow-xl border border-gray-100">
+      <div className="flex items-center gap-4 mb-8 border-b pb-6">
+        <User size={32} className="text-blue-600" />
         <h2 className="text-3xl font-black text-gray-900">運営者情報</h2>
       </div>
-      
-      <div className="space-y-10">
-        <div className="bg-gray-50 p-8 rounded-[2rem] border-l-4 border-blue-600">
-          <p className="whitespace-pre-wrap text-gray-700 text-lg leading-loose font-medium">
-            昭和？年生まれ{"\n"}
-            画像圧縮ツールがあったらいいなという思いつきから{"\n"}
-            VercelとGitHubなどをごちょごちょいじって作りました。{"\n"}
-            見た目はシンプルですが、圧縮率は他に負けない本格性能です。{"\n"}
-            是非たくさん活用ください！{"\n"}
-            こんな機能がほしいとか不具合などあれば、{"\n"}
-            お問い合わせよりいただけると幸いです。
-          </p>
-        </div>
-        
-        <div className="p-10 bg-gray-900 rounded-[2.5rem] text-white group overflow-hidden relative">
-          <div className="absolute bottom-0 right-0 w-32 h-32 bg-blue-600/30 blur-3xl rounded-full translate-x-10 translate-y-10"></div>
-          <h4 className="font-black text-blue-400 uppercase tracking-widest text-xs mb-4">Contact Support</h4>
-          <div className="space-y-2">
-            <p className="text-gray-400 text-sm font-bold uppercase">E-mail</p>
-            <p className="text-base md:text-lg font-mono text-white/90 select-all tracking-tight break-all">
-              dongshantian674@gmail.com
-            </p>
-          </div>
+      <div className="space-y-8 text-gray-700 text-lg leading-loose">
+        <p className="whitespace-pre-wrap bg-gray-50 p-6 rounded-2xl border-l-4 border-blue-600">
+          昭和？年生まれ{"\n"}
+          画像圧縮ツールがあったらいいなという思いつきから制作しました。{"\n"}
+          サーバーにデータを送らない、安心・安全な設計です。
+        </p>
+        <div className="p-8 bg-gray-900 rounded-3xl text-white">
+          <p className="text-blue-400 text-sm font-bold mb-2">お問い合わせ</p>
+          <p className="font-mono break-all">dongshantian674@gmail.com</p>
         </div>
       </div>
     </div>
@@ -68,76 +50,37 @@ const OperatorInfo = () => (
 );
 
 const PrivacyPolicy = () => (
-  <div className="max-w-3xl mx-auto py-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <div className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-sm border border-gray-100">
-      <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-6">
-        <div className="bg-green-100 p-3 rounded-2xl text-green-600">
-          <Lock size={32} />
-        </div>
+  <div className="max-w-3xl mx-auto py-10">
+    <div className="bg-white p-10 md:p-16 rounded-[3rem] shadow-sm border border-gray-100">
+      <div className="flex items-center gap-4 mb-8 border-b pb-6">
+        <Lock size={32} className="text-green-600" />
         <h2 className="text-3xl font-black text-gray-900">プライバシーポリシー</h2>
       </div>
-      <div className="prose prose-blue max-w-none text-gray-600 leading-relaxed">
-        <h3 className="text-xl font-bold mb-4 text-gray-800">1. 個人情報の取り扱いについて</h3>
-        <p className="mb-8">
-          当サイトでは、ユーザーのプライバシーを第一に考えています。
-          当ツールは<strong>ブラウザ側（クライアントサイド）で画像処理を行う技術</strong>を使用しており、
-          お客様の画像データが当サイトのサーバーに送信・保存されることは一切ありません。
-        </p>
-        
-        <h3 className="text-xl font-bold mb-4 text-gray-800">2. 広告配信について</h3>
-        <p className="mb-8">
-          当サイトでは、第三者配信の広告サービス（Google AdSense）を利用しています。
-          このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、
-          Cookieを使用することがあります。
-        </p>
-
-        <h3 className="text-xl font-bold mb-4 text-gray-800">3. アクセス解析ツールについて</h3>
-        <p className="mb-4">
-          当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
-          トラフィックデータは匿名で収集されており、個人を特定するものではありません。
-        </p>
+      <div className="text-gray-600 space-y-6">
+        <p>当サイトは、ブラウザ側で画像処理を行うため、お客様の画像データをサーバーに送信することはありません。</p>
+        <p>アクセス解析にはGoogleアナリティクスを使用しています。データは匿名で収集されます。</p>
       </div>
     </div>
   </div>
 );
 
 const Terms = () => (
-  <div className="max-w-3xl mx-auto py-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <div className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-sm border border-gray-100">
-      <div className="flex items-center gap-4 mb-8 border-b border-gray-100 pb-6">
-        <div className="bg-purple-100 p-3 rounded-2xl text-purple-600">
-          <FileText size={32} />
-        </div>
+  <div className="max-w-3xl mx-auto py-10">
+    <div className="bg-white p-10 md:p-16 rounded-[3rem] shadow-sm border border-gray-100">
+      <div className="flex items-center gap-4 mb-8 border-b pb-6">
+        <FileText size={32} className="text-purple-600" />
         <h2 className="text-3xl font-black text-gray-900">利用規約</h2>
       </div>
-      <div className="prose prose-blue max-w-none text-gray-600 leading-relaxed">
-        <h3 className="text-xl font-bold mb-4 text-gray-800">1. 規約への同意</h3>
-        <p className="mb-8">
-          当サイトを利用することによって、本規約の内容に同意したものとみなします。
-        </p>
-
-        <h3 className="text-xl font-bold mb-4 text-gray-800">2. 免責事項</h3>
-        <p className="mb-8">
-          当サイトの利用により生じた、いかなる損害（データの破損、損失など）についても、運営者は一切の責任を負いません。
-          画像のバックアップはユーザー自身の責任で行ってください。
-        </p>
-
-        <h3 className="text-xl font-bold mb-4 text-gray-800">3. 禁止事項</h3>
-        <p className="mb-8">
-          当サイトの運営を妨げる行為、不正なアクセス、または法令に違反する行為を禁止します。
-        </p>
-
-        <h3 className="text-xl font-bold mb-4 text-gray-800">4. サービスの変更・停止</h3>
-        <p className="mb-4">
-          当サイトは、予告なくサービスの内容を変更、または停止することがあります。
-        </p>
+      <div className="text-gray-600 space-y-6">
+        <p>1. 本規約は、当サイトの利用条件を定めるものです。</p>
+        <p>2. 当サイトの利用により生じた損害について、運営者は一切の責任を負いません。</p>
+        <p>3. 予告なくサービス内容を変更することがあります。</p>
       </div>
     </div>
   </div>
 );
 
 // --- Main Application ---
-
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [files, setFiles] = useState([]);
@@ -163,16 +106,12 @@ export default function App() {
           canvas.width = img.width;
           canvas.height = img.height;
           ctx.drawImage(img, 0, 0);
-
           const format = 'image/jpeg';
           const compressedDataUrl = canvas.toDataURL(format, currentQuality);
-          const head = 'data:' + format + ';base64,';
-          const size = Math.round((compressedDataUrl.length - head.length) * 3 / 4);
-
+          const size = Math.round((compressedDataUrl.length - 22) * 3 / 4);
           resolve({
             id: Math.random().toString(36).substr(2, 9),
             originalFile: file,
-            originalPreview: img.src,
             compressedPreview: compressedDataUrl,
             originalSize: file.size,
             compressedSize: size,
@@ -186,10 +125,6 @@ export default function App() {
   const handleFiles = async (fileList) => {
     setIsProcessing(true);
     const validFiles = Array.from(fileList).filter(file => file.type.startsWith('image/'));
-    if (validFiles.length === 0) {
-      setIsProcessing(false);
-      return;
-    }
     const processed = await Promise.all(validFiles.map(file => compressImage(file, quality)));
     setFiles(prev => [...processed, ...prev]);
     setIsProcessing(false);
@@ -207,10 +142,8 @@ export default function App() {
   }, [quality]);
 
   const onDragOver = (e) => { e.preventDefault(); setDragActive(true); };
-  const onDragLeave = () => setDragActive(false);
   const onDrop = (e) => {
-    e.preventDefault();
-    setDragActive(false);
+    e.preventDefault(); setDragActive(false);
     if (e.dataTransfer.files) handleFiles(e.dataTransfer.files);
   };
 
@@ -221,186 +154,89 @@ export default function App() {
   };
 
   const HomeView = () => (
-    <div className="space-y-24">
-      {/* Hero Section */}
-      <section className="text-center pt-10 pb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-bold mb-8">
-          <Shield size={16} />
-          <span>100% プライバシー保護・ブラウザ完結型</span>
+    <div className="space-y-16 py-8">
+      {/* Hero */}
+      <section className="text-center">
+        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-sm font-bold mb-6">
+          <Shield size={16} /> <span>100% 安全・ブラウザ完結型</span>
         </div>
-        <h2 className="text-5xl md:text-7xl font-black mb-8 leading-[1.15] text-gray-900 tracking-tight">
-          画像を<span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent italic">ギュッ！</span>と<br/>一瞬で軽くする。
-        </h2>
-        <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-12">
-          重い写真も、このツールなら品質を保ったまま最適化。<br/>
-          画像は一瞬たりともサーバーに送られないから、<span className="text-gray-900 font-bold underline decoration-blue-300">究極に安全</span>です。
+        <h1 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
+          画像を<span className="text-blue-600">ギュッ</span>と軽くする。
+        </h1>
+        <p className="text-gray-500 text-lg max-w-xl mx-auto mb-10">
+          サーバーに一切送信しないから安心。一瞬で画像を最適化します。
         </p>
-
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {[
-            { s: 1, t: "えらぶ" },
-            { s: 2, t: "かるくなる" },
-            { s: 3, t: "のこす" }
-          ].map(step => (
-            <div key={step.s} className="bg-white border border-gray-100 px-6 py-3 rounded-2xl flex items-center gap-3 shadow-sm hover:translate-y-[-2px] transition-all">
-              <span className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-black">{step.s}</span>
-              <span className="font-bold text-gray-700">{step.t}</span>
-            </div>
-          ))}
-        </div>
 
         {/* Dropzone */}
         <div 
-          className={`group relative max-w-3xl mx-auto border-2 border-dashed rounded-[3rem] p-16 md:p-24 transition-all duration-500 cursor-pointer ${dragActive ? 'border-blue-500 bg-blue-50/50 scale-[1.02]' : 'border-gray-200 bg-white hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-100'}`}
           onDragOver={onDragOver}
-          onDragLeave={onDragLeave}
+          onDragLeave={() => setDragActive(false)}
           onDrop={onDrop}
           onClick={() => fileInputRef.current.click()}
+          className={`max-w-2xl mx-auto border-4 border-dashed rounded-[2.5rem] p-12 md:p-20 transition-all cursor-pointer bg-white ${dragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300'}`}
         >
           <input ref={fileInputRef} type="file" multiple accept="image/*" className="hidden" onChange={(e) => handleFiles(e.target.files)} />
-          <div className="w-24 h-24 bg-gradient-to-tr from-blue-600 to-indigo-500 text-white rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:rotate-6 transition-transform">
-            {isProcessing ? <Zap className="animate-spin" size={40} /> : <Upload size={40} />}
-          </div>
-          <h3 className="text-2xl font-black text-gray-900 mb-3">ここに画像をドロップ</h3>
-          <p className="text-gray-400 font-medium">またはクリックしてファイルを選択</p>
+          <Upload size={48} className="mx-auto mb-6 text-blue-500" />
+          <p className="text-xl font-bold text-gray-800">画像をここにドロップ</p>
+          <p className="text-gray-400">またはクリックして選択</p>
         </div>
       </section>
 
       {/* Results */}
       {files.length > 0 && (
-        <section className="animate-in fade-in slide-in-from-bottom-8 duration-500 space-y-6">
-          <div className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-500"></div>
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
-              <div className="flex items-center gap-3">
-                <div className="bg-gray-100 p-2 rounded-xl text-gray-600"><Settings size={24} /></div>
-                <div>
-                  <h3 className="font-bold text-xl text-gray-800">圧縮レベル調整</h3>
-                  <p className="text-xs text-gray-400">スライダーを動かすとリアルタイムで再計算します</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <span className="text-3xl font-bold text-blue-600">{Math.round(quality * 100)}</span>
-                <span className="text-gray-400 text-sm ml-1">% の画質</span>
-              </div>
+        <div className="space-y-6 max-w-3xl mx-auto">
+          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div className="flex justify-between items-center mb-4">
+              <span className="font-bold text-gray-700">圧縮クオリティ: {Math.round(quality * 100)}%</span>
             </div>
-            <input type="range" min="0.1" max="1.0" step="0.05" value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-full h-3 bg-gray-100 rounded-full appearance-none cursor-pointer accent-blue-600" />
+            <input type="range" min="0.1" max="1.0" step="0.05" value={quality} onChange={(e) => setQuality(parseFloat(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600" />
           </div>
 
-          <div className="grid gap-4">
-            {files.map(file => (
-              <div key={file.id} className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-gray-100 flex flex-col sm:flex-row items-center gap-8 transition-hover hover:shadow-md">
-                <img src={file.compressedPreview} className="w-24 h-24 object-cover rounded-3xl shadow-inner bg-gray-50" />
-                <div className="flex-1 min-w-0 text-center sm:text-left">
-                  <div className="flex justify-between items-start mb-2">
-                    <p className="font-black text-gray-900 truncate text-xl">{file.fileName}</p>
-                    <Button variant="danger" onClick={(e) => { e.stopPropagation(); setFiles(files.filter(f => f.id !== file.id)); }}>
-                      <X size={18} />
-                    </Button>
-                  </div>
-                  <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4">
-                    <span className="text-gray-400 font-medium line-through decoration-gray-300">{formatSize(file.originalSize)}</span>
-                    <ArrowRight size={16} className="text-gray-300" />
-                    <span className="text-blue-600 font-black text-2xl">{formatSize(file.compressedSize)}</span>
-                    <span className="bg-blue-100 text-blue-700 text-xs font-black px-3 py-1 rounded-full">
-                      -{Math.round((1 - file.compressedSize / file.originalSize) * 100)}%
-                    </span>
-                  </div>
-                </div>
+          {files.map(file => (
+            <div key={file.id} className="bg-white p-4 rounded-3xl border border-gray-100 flex flex-col sm:flex-row items-center gap-6">
+              <img src={file.compressedPreview} className="w-20 h-20 object-cover rounded-2xl" />
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-gray-900 truncate">{file.fileName}</p>
+                <p className="text-sm text-gray-400">{formatSize(file.originalSize)} → <span className="text-blue-600 font-bold">{formatSize(file.compressedSize)}</span></p>
+              </div>
+              <div className="flex items-center gap-2">
                 <Button onClick={() => {
-                  const a = document.createElement('a');
-                  a.href = file.compressedPreview; a.download = `min_${file.fileName}`; a.click();
-                }} className="w-full sm:w-auto">
-                  <Download size={20} />保存する
-                </Button>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Trust Section */}
-      <section className="bg-gray-900 rounded-[4rem] p-12 md:p-20 text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-[100px] rounded-full"></div>
-        <div className="relative z-10 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h3 className="text-3xl md:text-4xl font-black mb-8 leading-tight">なぜ「安全」と言い切れるのか。</h3>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
-              一般的な圧縮サイトは画像を一度サーバーにアップロードしますが、このツールは<span className="text-white font-bold italic">「ブラウザ完結型」</span>という技術を採用しています。
-            </p>
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="text-blue-400 mt-1"><Lock size={24} /></div>
-                <div>
-                  <h4 className="font-bold text-white mb-1">データ送信ゼロ</h4>
-                  <p className="text-sm text-gray-500">画像はあなたのPC/スマホの外へ一歩も出ません。</p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="text-blue-400 mt-1"><Zap size={24} /></div>
-                <div>
-                  <h4 className="font-bold text-white mb-1">履歴が残らない</h4>
-                  <p className="text-sm text-gray-500">ページを閉じればすべてのデータは消滅します。</p>
-                </div>
+                  const a = document.createElement('a'); a.href = file.compressedPreview; a.download = `min_${file.fileName}`; a.click();
+                }}>ダウンロード</Button>
+                <Button variant="danger" onClick={() => setFiles(files.filter(f => f.id !== file.id))}><X size={18} /></Button>
               </div>
             </div>
-          </div>
-          <div className="bg-white/5 border border-white/10 p-10 rounded-[3rem] backdrop-blur-sm">
-            <div className="flex flex-col items-center gap-6">
-              <div className="flex items-center gap-4 w-full">
-                <div className="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white"><Upload size={24} /></div>
-                <div className="h-1 flex-1 bg-gray-700 rounded-full overflow-hidden">
-                  <div className="h-full w-1/2 bg-blue-400 animate-pulse"></div>
-                </div>
-                <div className="w-12 h-12 rounded-2xl bg-gray-800 flex items-center justify-center text-white"><Shield size={24} /></div>
-              </div>
-              <div className="text-center">
-                <p className="text-sm font-bold text-blue-400 mb-2 uppercase tracking-widest">Security Check: Passed</p>
-                <p className="text-xs text-gray-500">あなたのブラウザ内だけで処理されています</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      )}
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-[#fcfdfe] font-sans text-gray-800">
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-          <button onClick={() => setCurrentPage('home')} className="flex items-center gap-3 group transition-transform active:scale-95">
-            <div className="bg-gradient-to-tr from-blue-600 to-indigo-500 text-white p-2.5 rounded-2xl shadow-lg shadow-blue-100 group-hover:rotate-6 transition-transform">
-              <Smile size={24} />
-            </div>
-            <span className="text-xl font-black tracking-tight text-gray-900">画像圧縮ツールくん</span>
+    <div className="min-h-screen bg-[#f8fafc] text-gray-800">
+      <header className="bg-white border-b sticky top-0 z-40">
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <button onClick={() => setCurrentPage('home')} className="flex items-center gap-2">
+            <div className="bg-blue-600 text-white p-1.5 rounded-lg"><Smile size={20} /></div>
+            <span className="font-black text-lg">画像圧縮ツールくん</span>
           </button>
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-12 min-h-[calc(100vh-300px)]">
+      <main className="max-w-5xl mx-auto px-6 py-8">
         {currentPage === 'home' && <HomeView />}
         {currentPage === 'operator' && <OperatorInfo />}
         {currentPage === 'privacy' && <PrivacyPolicy />}
         {currentPage === 'terms' && <Terms />}
       </main>
 
-      <footer className="bg-white border-t border-gray-100 pt-16 pb-8 mt-24">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 mb-10 text-gray-400 font-black text-xs uppercase tracking-widest">
-            <button onClick={() => setCurrentPage('home')} className="hover:text-blue-600 transition-colors">Home</button>
-            <button onClick={() => setCurrentPage('operator')} className="hover:text-blue-600 transition-colors">Operator</button>
-            <button onClick={() => setCurrentPage('terms')} className="hover:text-blue-600 transition-colors">Terms</button>
-            <button onClick={() => setCurrentPage('privacy')} className="hover:text-blue-600 transition-colors">Privacy</button>
-          </div>
-          <div className="flex items-center justify-center gap-2 mb-4 opacity-50">
-            <Sparkles size={16} className="text-yellow-400" />
-            <span className="text-xs font-bold text-gray-300 uppercase tracking-widest">Made with love</span>
-          </div>
-          <p className="text-[10px] text-gray-300 font-bold uppercase tracking-[0.3em]">
-            &copy; 2026 umegaoka-connect.site
-          </p>
+      <footer className="py-12 border-t mt-20 text-center text-sm text-gray-400 font-bold">
+        <div className="flex justify-center gap-6 mb-4">
+          <button onClick={() => setCurrentPage('operator')} className="hover:text-blue-600">運営者</button>
+          <button onClick={() => setCurrentPage('terms')} className="hover:text-blue-600">規約</button>
+          <button onClick={() => setCurrentPage('privacy')} className="hover:text-blue-600">プライバシー</button>
         </div>
+        <p>© 2026 umegaoka-connect.site</p>
       </footer>
     </div>
   );
